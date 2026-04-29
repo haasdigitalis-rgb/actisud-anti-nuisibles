@@ -1038,8 +1038,199 @@ a { color: var(--acti-yellow-dark); text-decoration: none; }
   .float-call::before { display: none; }
 }
 body.cookie-visible .float-call { bottom: 100px; }
+/* ═══════════════════════════════════════════════════════
+   OPTIMISATIONS MOBILE COMPLÈTES (≤ 768px)
+   ═══════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
-  body.cookie-visible .float-call { bottom: 160px; }
+  /* Body : padding bottom pour éviter que sticky cache le contenu */
+  body { padding-bottom: 90px; }
+
+  /* Container : marges latérales optimisées */
+  .container { padding: 0 16px; }
+
+  /* Bandeau urgence top : plus petit et lisible */
+  .urgence-bar { padding: 8px 12px; font-size: 11px; letter-spacing: 0.3px; }
+  .urgence-bar span { gap: 6px; }
+
+  /* Header : compact */
+  .header { padding: 10px 0; }
+  .header-inner { gap: 8px; }
+  .logo-img { height: 42px; }
+  .logo-text strong { font-size: 16px; }
+  .logo-text small { font-size: 9px; letter-spacing: 0.5px; }
+  .header-phone { padding: 10px 14px; font-size: 14px; border-width: 2px; }
+
+  /* Hero : grand titre lisible */
+  .hero { padding: 40px 0 70px; }
+  .hero-badge { font-size: 11px; padding: 7px 14px; margin-bottom: 18px; letter-spacing: 0.5px; }
+  .hero h1 { font-size: 32px; letter-spacing: -0.8px; line-height: 1.1; }
+  .hero-subtitle { font-size: 15px; margin-bottom: 28px; line-height: 1.55; }
+
+  /* CTA hero : pleine largeur, lisible */
+  .cta-big {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    font-size: 20px;
+    padding: 18px 16px;
+    border-width: 2px;
+    box-shadow: 0 4px 16px rgba(255,214,0,0.4);
+  }
+  .cta-sub { font-size: 13px; margin-top: 12px; text-align: center; }
+
+  /* Trust bar : pile claire au lieu de tassement */
+  .trust-bar {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 28px;
+    padding-top: 18px;
+  }
+  .trust-bar-item { font-size: 13px; }
+
+  /* Offre box : compact */
+  .offer-box {
+    margin: -30px 16px 40px;
+    padding: 22px 18px;
+    border-width: 3px;
+    max-width: calc(100% - 32px);
+  }
+  .offer-box h2 { font-size: 20px; margin-bottom: 6px; line-height: 1.25; }
+  .offer-box p { font-size: 14px; line-height: 1.5; }
+
+  /* Sections : padding réduit */
+  .section { padding: 45px 0; }
+  .section-title { font-size: 24px; margin-bottom: 12px; line-height: 1.2; }
+  .section-title span { padding: 0 8px; }
+  .section-subtitle { font-size: 15px; margin-bottom: 32px; line-height: 1.5; padding: 0 8px; }
+
+  /* Cards nuisibles : 1 colonne sous 480px sinon 2 colonnes */
+  .nuisibles-grid { grid-template-columns: 1fr; gap: 14px; }
+  .nuisible-card { padding: 22px 18px; }
+  .nuisible-card h3 { font-size: 18px; }
+  .nuisible-card p { font-size: 13px; }
+  .nuisible-icon-svg { width: 52px; height: 52px; margin-bottom: 14px; }
+  .badge-urgent { font-size: 9px; padding: 3px 8px; top: 10px; right: 10px; }
+
+  /* Méthode 4 étapes : 1 colonne sur petits écrans */
+  .steps-grid { grid-template-columns: 1fr; gap: 16px; }
+  .step-item { padding: 24px 18px; }
+  .step-num { width: 52px; height: 52px; font-size: 22px; }
+  .step-item h4 { font-size: 17px; }
+
+  /* Différenciation : 1 colonne */
+  .differentiation-grid { grid-template-columns: 1fr; gap: 14px; margin-top: 28px; }
+  .diff-item { padding: 16px 14px; gap: 14px; }
+  .diff-icon { width: 46px; height: 46px; font-size: 22px; }
+
+  /* Avis : 1 colonne */
+  .reviews-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 28px; }
+  .review-card { padding: 22px 18px; }
+  .review-text { font-size: 14px; line-height: 1.55; }
+
+  /* FAQ : zone tactile optimisée */
+  .faq-list { margin-top: 28px; }
+  .faq-question { padding: 18px 18px; font-size: 15px; }
+  .faq-question::after { font-size: 24px; }
+  .faq-item.open .faq-answer { padding: 14px 18px 18px; }
+  .faq-answer p { font-size: 14px; line-height: 1.5; }
+
+  /* Formulaire : champs plus tactiles */
+  .form-card {
+    padding: 26px 22px;
+    border-width: 3px;
+  }
+  .form-card h3 { font-size: 22px; margin-bottom: 6px; }
+  .form-card > p { font-size: 14px; margin-bottom: 20px; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 14px 14px;
+    font-size: 16px; /* iOS : 16px évite le zoom auto au focus */
+  }
+  .form-group label { font-size: 14px; }
+  .btn-submit {
+    padding: 16px;
+    font-size: 16px;
+    border-width: 2px;
+  }
+
+  /* Zone agences : grille adaptée */
+  .zone-card { padding: 26px 20px; border-width: 3px; }
+  .zone-card h3 { font-size: 19px; }
+  .zone-villes { grid-template-columns: 1fr; gap: 10px; }
+  .zone-ville { padding: 12px; }
+  .zone-ville strong { font-size: 13px; }
+  .zone-ville a { font-size: 15px; }
+  .zone-info { font-size: 13px; line-height: 1.6; padding-top: 16px; }
+
+  /* CTA final : compact */
+  .cta-final { padding: 60px 16px; }
+  .cta-final h2 { font-size: 26px; line-height: 1.15; margin-bottom: 12px; }
+  .cta-final p { font-size: 15px; margin-bottom: 24px; }
+
+  /* Footer : padding réduit */
+  .footer { padding: 40px 0 24px; }
+  .footer-grid { gap: 26px; margin-bottom: 24px; }
+  .footer h4 { font-size: 14px; }
+  .footer-bottom { font-size: 11px; padding-top: 18px; }
+
+  /* Sticky mobile : taille optimisée */
+  .sticky-mobile { padding: 6px; gap: 6px; }
+  .sticky-mobile a {
+    padding: 13px 6px;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+  }
+
+  /* Bouton flottant : positionné pour ne pas gêner sticky */
+  .float-call {
+    width: 56px;
+    height: 56px;
+    bottom: 78px;
+    right: 14px;
+    border-width: 3px;
+  }
+  .float-call svg { width: 26px; height: 26px; }
+  .float-call::before { display: none; }
+}
+
+/* ═══════════════════════════════════════════════════════
+   PETITS ÉCRANS (≤ 480px) - Ajustements supplémentaires
+   ═══════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .container { padding: 0 14px; }
+
+  /* Bandeau urgence : plus court */
+  .urgence-bar { font-size: 10px; padding: 7px 10px; }
+
+  /* Hero : ultra optimisé */
+  .hero { padding: 30px 0 60px; }
+  .hero h1 { font-size: 28px; }
+  .hero-subtitle { font-size: 14px; }
+  .cta-big { font-size: 18px; padding: 16px 12px; }
+
+  /* Sections : encore plus compactes */
+  .section { padding: 40px 0; }
+  .section-title { font-size: 22px; }
+  .section-subtitle { font-size: 14px; margin-bottom: 28px; }
+
+  /* Form-zone passe en pile */
+  .form-zone-grid { gap: 24px; }
+  .form-card { padding: 22px 16px; }
+  .form-card h3 { font-size: 20px; }
+  .zone-card { padding: 22px 16px; }
+
+  /* Sticky : encore plus compact */
+  .sticky-mobile a { font-size: 13px; padding: 12px 4px; }
+}
+
+/* ═══════════════════════════════════════════════════════
+   PAYSAGE MOBILE (orientation horizontale)
+   ═══════════════════════════════════════════════════════ */
+@media (max-width: 900px) and (orientation: landscape) {
+  .hero { padding: 30px 0 50px; }
+  .hero h1 { font-size: 28px; }
+  .float-call { bottom: 70px; }
 }
 
 /* ═══════════════════════════════════════════════════════
